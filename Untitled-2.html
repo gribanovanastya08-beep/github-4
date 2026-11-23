@@ -1,117 +1,301 @@
 <!DOCTYPE html>
- 
 <html lang="ru">
- 
 <head>
- 
     <meta charset="UTF-8">
- 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Style.css">
- 
-<title> осень</title>
- 
-</head>
- <style>
-@import url('https://fonts.google.com/selection/embed');
- body
- {    
-  font-family: "Oswald",sans-serif;
-  font-optical-sizing:auto;
-  font-weight: weight;
-  font-style:normal
-"wdth" 110;
- }
- 
-h1{
-    color: #e48614;
-}
-p {
-     font-size: 14px;
-     }
-p {
-    margin-left: 25px;
-padding: 9px;
-}
- 
-footer {background: color rgb(243, 213, 185)}
-footer {text-align: center;}
-h1{font-weight: bold}
-h3{font-weight: bold}
+    <title>Кофейня «Тёплый кранчик»</title>
+    <style>
+        /* ===== Базовые стили ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  
- </style>
- <body>
- 
-    <header><nav>
-<p>Статья про осень</p>
- 
-  </nav></header>
-<main>
-   <h1><b>Золотая осень: время перемен и уюта</b></h1>
-   <h3><i>Cейчас немного расскажу вам про осень</i></h3>
- 
-    <p>Осень — это не просто сезон между летом и зимой. Это особое настроение, когда мир будто замедляется, чтобы дать нам время подумать, оглянуться назад и подготовиться к долгой зиме. Для кого-то осень — про дожди и слякоть, а для кого-то — про тёплые шарфы, горячий чай и прогулки по шуршащим листьям.</p>
- 
-    <h1>Осенние традиции и маленькие радости</h1>
- 
-    <h3><i>Именно осенью особенно хочется уюта. Вот несколько простых вещей, которые делают этот сезон теплее:</i></h3>
- 
- 
-<naw>
- 
-    <ul>
- 
-        <li>Чашка горячего напитка. Какао, чай с пряностями или кофе с корицей — отличный способ согреться и настроиться на спокойный лад.</li>
- 
-        <li>Прогулки по парку. Даже если на улице прохладно, прогулка среди опавших листьев помогает разгрузить голову и почувствовать связь с природой.</li>
- 
-        <li>ПОсенние заготовки. Варенье из яблок, сушёные грибы, домашние соленья — это и вкус, и воспоминания, и маленький ритуал заботы о себе.</li>
- 
-    </ul>
-    <img
-    src="https://img.magnific.com/free-photo/close-up-autumn-leaves_23-2151881134.jpg?semt=ais_hybrid&w=740&q=80">
- 
-    <hr>
- 
-    <h1>Осень в культуре</h1>
-    <h3><i>Немного о сени из литературы</i></h3>
-    <p>
- 
-   <p>
- 
-     В русской литературе осень часто становится символом размышлений и лёгкой грусти. У Пушкина это «очей очарованье», у Тютчева — особая тишина и зрелость природы. Художники любят осень за богатую палитру: от приглушённых серо‑коричневых тонов до ярких пятен рябины и клёна.
- 
-А в современной культуре осень — ещё и про стиль: многослойность в одежде, уютные свитера, шарфы и ботинки. Это сезон, когда можно позволить себе больше текстур и тёплых цветов.
-</p>
-<h1>Как провести осень с пользой</h1>
-    <h3><i>Если хочется не просто «пережить» осень, а прожить её осознанно, можно попробовать такие идеи:</i></h3>
-<ol>
- 
-    <li>Фотодневник. Каждый день или раз в неделю фотографировать одну деталь осени: лист, лужу, витрину, небо. В конце сезона получится целая история.</li>
- 
-    <li>Сбор гербария. Простой и медитативный способ сохранить осенние краски.</li>
- 
-    <li>Мини‑путешествия по своему городу. Найти новые маршруты, парки и дворики, которые летом остаются незамеченными.</li>
- 
-    <li>Письмо себе в будущее. Осень — хорошее время для размышлений. Можно написать письмо, запечатать его и открыть весной, чтобы сравнить ощущения.</li>
- 
-<h1>Заключение</h1>
-<p>Осень не обязана быть унылой. Это время, когда природа учит нас замедлению и подготовке, а город и дом — уюту и заботе о себе. Пусть эта осень будет не про «дожить до зимы», а про маленькие тёплые моменты, которые хочется запомнить.</p>
-</main>
-      <footer><br>
- 
-        <p>Для вайба </p>
- 
-  <nav>
-    
- 
-        <li><a href="https://www.litres.ru/journal/krasivye-tsitaty-pro-osen-60-fraz-dlia-nastroeniia/">Цитаты про осень</a></li>
-        <li><a href="https://www.litres.ru/journal/top-10-romanov-s-osennim-nastroeniem/">Романы для осени</a></li>
-        
- 
-    </nav>
- 
-</footer>
- 
-</body> </html>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            color: #333;
+            background: #faf6f1;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ===== Шапка и навигация ===== */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: #4b2e2e;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            color: #fff;
+            font-size: 22px;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .nav a {
+            color: #e8d8c3;
+            text-decoration: none;
+            margin-left: 25px;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .nav a:hover {
+            color: #fff;
+        }
+
+        .nav a.active {
+            background: #8a5a44;
+            color: #fff;
+        }
+
+        /* ===== Переключение страниц ===== */
+        .page {
+            display: none;
+            flex: 1;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .page.visible {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to   { opacity: 1; transform: none; }
+        }
+
+        /* ===== Главная ===== */
+        .hero {
+            text-align: center;
+            padding: 100px 20px 60px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            color: #4b2e2e;
+        }
+
+        .hero p {
+            max-width: 560px;
+            margin: 0 auto 30px;
+            font-size: 18px;
+            color: #6b5d52;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #8a5a44;
+            color: #fff;
+            padding: 12px 32px;
+            border-radius: 30px;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            font-size: 16px;
+            transition: background 0.2s;
+        }
+
+        .btn:hover {
+            background: #6e4534;
+        }
+
+        .features {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 40px 20px 80px;
+            flex-wrap: wrap;
+        }
+
+        .feature {
+            background: #fff;
+            border-radius: 10px;
+            padding: 25px;
+            max-width: 280px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        .feature h3 {
+            margin-bottom: 10px;
+            color: #4b2e2e;
+        }
+
+        /* ===== Внутренние страницы ===== */
+        .inner {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 50px 20px 80px;
+            width: 100%;
+        }
+
+        .inner h1 {
+            color: #4b2e2e;
+            margin-bottom: 20px;
+        }
+
+        .inner h2 {
+            color: #8a5a44;
+            margin: 30px 0 15px;
+        }
+
+        /* ===== Меню ===== */
+        .menu-list {
+            list-style: none;
+        }
+
+        .menu-list li {
+            display: flex;
+            align-items: baseline;
+            padding: 8px 0;
+        }
+
+        .menu-list .dots {
+            flex: 1;
+            border-bottom: 1px dotted #b9a89b;
+            margin: 0 10px;
+        }
+
+        /* ===== Контакты ===== */
+        .contacts-list {
+            list-style: none;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        .contacts-list li {
+            padding: 8px 0;
+        }
+
+        .contacts-list a {
+            color: #8a5a44;
+        }
+
+        /* ===== Подвал ===== */
+        .footer {
+            text-align: center;
+            padding: 25px;
+            background: #4b2e2e;
+            color: #c9b6a3;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Шапка одна на все страницы -->
+    <header class="header">
+        <a class="logo" onclick="showPage('home')">☕ Тёплый кранчик</a>
+        <nav class="nav">
+            <a id="nav-home" class="active" onclick="showPage('home')">Главная</a>
+            <a id="nav-menu" onclick="showPage('menu')">Меню</a>
+            <a id="nav-contacts" onclick="showPage('contacts')">Контакты</a>
+        </nav>
+    </header>
+
+    <!-- Страница 1: Главная -->
+    <section id="home" class="page visible">
+        <div class="hero">
+            <h1>Мы открылись!</h1>
+            <p>Маленькая кофейня в центре города. Свежая обжарка, домашние десерты и облепиховый чай по маминому рецепту.</p>
+            <button class="btn" onclick="showPage('menu')">Посмотреть меню</button>
+        </div>
+        <div class="features">
+            <div class="feature">
+                <h3>Свежая обжарка</h3>
+                <p>Зерно прибывает каждую неделю и обжаривается прямо перед подачей.</p>
+            </div>
+            <div class="feature">
+                <h3>Домашние десерты</h3>
+                <p>Чизкейк, штрудель и круассаны — печём каждое утро, а не привозим.</p>
+            </div>
+            <div class="feature">
+                <h3>Уютный зал</h3>
+                <p>Плетёнки, книги и розетки у каждого столика. Можно сидеть хоть весь день.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Страница 2: Меню -->
+    <section id="menu" class="page">
+        <div class="inner">
+            <h1>Меню</h1>
+
+            <h2>Кофе</h2>
+            <ul class="menu-list">
+                <li><span>Эспрессо</span><span class="dots"></span><span>120 ₽</span></li>
+                <li><span>Капучино</span><span class="dots"></span><span>220 ₽</span></li>
+                <li><span>Латте на овсяном</span><span class="dots"></span><span>280 ₽</span></li>
+                <li><span>Раф «Солёная карамель»</span><span class="dots"></span><span>310 ₽</span></li>
+            </ul>
+
+            <h2>Чай и другие напитки</h2>
+            <ul class="menu-list">
+                <li><span>Облепиховый чай</span><span class="dots"></span><span>250 ₽</span></li>
+                <li><span>Какао на молоке</span><span class="dots"></span><span>240 ₽</span></li>
+                <li><span>Лимонад «Розмарин и лайм»</span><span class="dots"></span><span>270 ₽</span></li>
+            </ul>
+
+            <h2>Десерты</h2>
+            <ul class="menu-list">
+                <li><span>Чизкейк «Нью-Йорк»</span><span class="dots"></span><span>320 ₽</span></li>
+                <li><span>Яблочный штрудель</span><span class="dots"></span><span>250 ₽</span></li>
+                <li><span>Круассан с миндалём</span><span class="dots"></span><span>190 ₽</span></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Страница 3: Контакты -->
+    <section id="contacts" class="page">
+        <div class="inner">
+            <h1>Контакты</h1>
+            <p>Найдите нас по запаху свежего кофе — или по данным ниже.</p>
+            <ul class="contacts-list">
+                <li><strong>Адрес:</strong> г. Москва, ул. Примерная, д. 12</li>
+                <li><strong>Телефон:</strong> <a href="tel:+79990001122">+7 (999) 000-11-22</a></li>
+                <li><strong>E-mail:</strong> <a href="mailto:hello@kranik.ru">hello@kranik.ru</a></li>
+                <li><strong>Часы работы:</strong> ежедневно с 8:00 до 22:00</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>© 2026 Кофейня «Тёплый кранчик». Все права защищены.</p>
+    </footer>
+
+    <script>
+        // Показывает нужную страницу и подсвечивает пункт меню
+        function showPage(id) {
+            // Скрываем все страницы
+            document.querySelectorAll('.page').forEach(function (page) {
+                page.classList.remove('visible');
+            });
+            // Показываем выбранную
+            document.getElementById(id).classList.add('visible');
+
+            // Обновляем активную ссылку в навигации
+            document.querySelectorAll('.nav a').forEach(function (link) {
+                link.classList.remove('active');
+            });
+            document.getElementById('nav-' + id).classList.add('active');
+
+            // Прокручиваем наверх, как при переходе на новую страницу
+            window.scrollTo(0, 0);
+        }
+    </script>
+
+</body>
+</html>
