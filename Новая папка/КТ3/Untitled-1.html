@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Кофейня «Тёплый угол» — свежий кофе и уютная атмосфера.">
+  <title>Тёплый угол — кофе с собой и для души</title>
+
+  <style>
+    :root {
+      --cream: #f7f1e8;
+      --paper: #fffdf9;
+      --brown: #533a2b;
+      --coffee: #835c43;
+      --orange: #e99a54;
+      --muted: #786d63;
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--brown);
+      background: var(--paper);
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    select {
+      font: inherit;
+    }
+
+    .container {
+      width: min(1100px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 253, 249, 0.96);
+      border-bottom: 1px solid #eee5d9;
+    }
+
+    .nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+    }
+
+    .logo span {
+      color: var(--orange);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--coffee);
+    }
+
+    .menu-toggle {
+      display: none;
+      border: 0;
+      background: transparent;
+      color: var(--brown);
+      font-size: 1.7rem;
+      cursor: pointer;
+    }
+
+    .hero {
+      min-height: 570px;
+      display: grid;
+      align-items: center;
+      background:
+        linear-gradient(90deg, rgba(35, 25, 19, 0.76), rgba(35, 25, 19, 0.12)),
+        url("https://commons.wikimedia.org/wiki/Special:FilePath/Barista_prepares_espresso_at_coffee_shop.jpg")
+        center 52% / cover;
+      color: white;
+    }
+
+    .hero-content {
+      max-width: 620px;
+      padding: 86px 0;
+    }
+
+    .eyebrow {
+      color: #ffd2a5;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+    }
+
+    h1 {
+      margin: 12px 0 18px;
+      font-size: clamp(2.5rem, 6vw, 4.7rem);
+      line-height: 1.05;
+    }
+
+    .hero p {
+      max-width: 490px;
+      color: #f4ece4;
+      font-size: 1.1rem;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 13px 22px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--orange);
+      color: #2c1c13;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      background: #f5ad6c;
+    }
+
+    section {
+      padding: 76px 0;
+    }
+
+    .section-heading {
+      max-width: 650px;
+      margin: 0 auto 36px;
+      text-align: center;
+    }
+
+    .section-heading h2 {
+      margin: 0 0 10px;
+      font-size: clamp(1.9rem, 4vw, 2.7rem);
+      line-height: 1.2;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .feature-card {
+      padding: 26px;
+      border: 1px solid #eee5d9;
+      border-radius: var(--radius);
+      background: var(--cream);
+    }
+
+    .feature-card .icon {
+      font-size: 1.8rem;
+    }
+
+    .feature-card h3 {
+      margin: 10px 0 6px;
+    }
+
+    .feature-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .gallery-section,
+    .faq-section {
+      background: var(--cream);
+    }
+
+    .slider {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: #3d2a20;
+    }
+
+    .slide {
+      display: none;
+      position: relative;
+      height: 470px;
+    }
+
+    .slide.active {
+      display: block;
+    }
+
+    .slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .slide-caption {
+      position: absolute;
+      inset: auto 0 0;
+      padding: 55px 28px 24px;
+      color: white;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    .slider-controls {
+      position: absolute;
+      inset: 50% 16px auto;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+
+    .slider-controls button {
+      width: 44px;
+      height: 44px;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(255, 253, 249, 0.9);
+      color: var(--brown);
+      font-size: 1.4rem;
+      cursor: pointer;
+      pointer-events: auto;
+    }
+
+    .dots {
+      display: flex;
+      justify-content: center;
+      gap: 9px;
+      margin-top: 17px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      padding: 0;
+      border: 0;
+      border-radius: 50%;
+      background: #cbb9a7;
+      cursor: pointer;
+    }
+
+    .dot.active {
+      background: var(--coffee);
+    }
+
+    .order-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .order-photo {
+      min-height: 390px;
+      border-radius: var(--radius);
+      background:
+        url("https://commons.wikimedia.org/wiki/Special:FilePath/Coffee_cup.jpg")
+        center / cover;
+    }
+
+    .calculator {
+      padding: 30px;
+      border: 1px solid #eee5d9;
+      border-radius: var(--radius);
+      background: var(--cream);
+    }
+
+    .calculator h2 {
+      margin-top: 0;
+    }
+
+    .field {
+      margin: 18px 0;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 7px;
+      font-weight: 700;
+    }
+
+    .field select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #d9cabc;
+      border-radius: 10px;
+      background: white;
+      color: var(--brown);
+    }
+
+    .total {
+      margin-top: 22px;
+      padding-top: 18px;
+      border-top: 1px solid #dfd2c5;
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+
+    .faq {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      margin: 12px 0;
+      overflow: hidden;
+      border: 1px solid #e7dbce;
+      border-radius: 12px;
+      background: var(--paper);
+    }
+
+    .faq-question {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 18px 20px;
+      border: 0;
+      background: transparent;
+      color: var(--brown);
+      text-align: left;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 0 20px 18px;
+      color: var(--muted);
+    }
+
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+
+    footer {
+      padding: 28px 0;
+      background: #38271e;
+      color: #f8eee4;
+      text-align: center;
+    }
+
+    footer p {
+      margin: 4px 0;
+    }
+
+    @media (max-width: 700px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 72px;
+        left: 0;
+        right: 0;
+        padding: 18px 20px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        background: var(--paper);
+        border-bottom: 1px solid #eee5d9;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .features,
+      .order-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .slide {
+        height: 330px;
+      }
+
+      .order-photo {
+        min-height: 270px;
+      }
+
+      section {
+        padding: 58px 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="nav container" aria-label="Основная навигация">
+      <a class="logo" href="#home">ТЁПЛЫЙ<span> УГОЛ</span></a>
+
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-label="Открыть меню"
+        aria-expanded="false"
+      >
+        ☰
+      </button>
+
+      <div class="nav-links">
+        <a href="#about">О нас</a>
+        <a href="#gallery">Атмосфера</a>
+        <a href="#order">Заказ</a>
+        <a href="#faq">Вопросы</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-content">
+          <div class="eyebrow">Кофейня у дома</div>
+          <h1>Кофе, который согревает</h1>
+          <p>
+            Загляните за любимым напитком, свежей выпечкой
+            и маленькой паузой посреди большого дня.
+          </p>
+          <a class="button" href="#order">Выбрать кофе</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Небольшие радости каждый день</h2>
+          <p>
+            Готовим внимательно: от выбора зёрен до последнего
+            штриха на молочной пене.
+          </p>
+        </div>
+
+        <div class="features">
+          <article class="feature-card">
+            <div class="icon">☕</div>
+            <h3>Свежая обжарка</h3>
+            <p>Подбираем зёрна с насыщенным вкусом и раскрываем их в каждой чашке.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="icon">🥐</div>
+            <h3>Выпечка каждый день</h3>
+            <p>Круассаны и десерты отлично подходят к утреннему капучино.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="icon">🤎</div>
+            <h3>Тёплая атмосфера</h3>
+            <p>Здесь можно встретиться с друзьями или немного побыть наедине с собой.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery-section" id="gallery">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Почувствуйте атмосферу</h2>
+          <p>Загляните внутрь — и выбирайте, где провести свой кофейный перерыв.</p>
+        </div>
+
+        <div class="slider" aria-label="Фотогалерея кофейни">
+          <div class="slide active">
+            <img
+              src="https://commons.wikimedia.org/wiki/Special:FilePath/Barista_prepares_espresso_at_coffee_shop.jpg"
+              alt="Бариста готовит кофе"
+            >
+            <div class="slide-caption">Кофе, приготовленный с заботой</div>
+          </div>
+
+          <div class="slide">
+            <img
+              src="https://commons.wikimedia.org/wiki/Special:FilePath/Coffee_cup_seen_from_above.jpg"
+              alt="Чашка кофе, вид сверху"
+            >
+            <div class="slide-caption">Любимые вкусы и новые открытия</div>
+          </div>
+
+          <div class="slide">
+            <img
+              src="https://commons.wikimedia.org/wiki/Special:FilePath/Coffee_cup.jpg"
+              alt="Чашка свежего кофе"
+            >
+            <div class="slide-caption">Ваш уютный кофейный перерыв</div>
+          </div>
+
+          <div class="slider-controls">
+            <button class="prev" type="button" aria-label="Предыдущее фото">‹</button>
+            <button class="next" type="button" aria-label="Следующее фото">›</button>
+          </div>
+        </div>
+
+        <div class="dots" aria-label="Выбрать фотографию"></div>
+      </div>
+    </section>
+
+    <section id="order">
+      <div class="container order-layout">
+        <div class="order-photo" role="img" aria-label="Чашка кофе на столе"></div>
+
+        <div class="calculator">
+          <h2>Посчитайте стоимость</h2>
+          <p>Выберите напиток и размер — калькулятор покажет примерную цену.</p>
+
+          <div class="field">
+            <label for="drink">Напиток</label>
+            <select id="drink">
+              <option value="180">Эспрессо — 180 ₽</option>
+              <option value="240">Американо — 240 ₽</option>
+              <option value="290">Капучино — 290 ₽</option>
+              <option value="320">Латте — 320 ₽</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="size">Размер</label>
+            <select id="size">
+              <option value="1">Обычный</option>
+              <option value="1.25">Большой (+25%)</option>
+            </select>
+          </div>
+
+          <div class="total">Итого: <span id="price">180</span> ₽</div>
+
+          <a
+            class="button"
+            href="mailto:hello@example.com?subject=Заказ%20кофе"
+          >
+            Оставить заявку
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq-section" id="faq">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Частые вопросы</h2>
+          <p>Коротко ответили на то, что обычно спрашивают гости.</p>
+        </div>
+
+        <div class="faq">
+          <article class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              Можно ли взять кофе с собой? <span>＋</span>
+            </button>
+            <div class="faq-answer">
+              Конечно! Мы приготовим напиток в стаканчике с собой.
+            </div>
+          </article>
+
+          <article class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              Есть ли у вас альтернативное молоко? <span>＋</span>
+            </button>
+            <div class="faq-answer">
+              Да, можно выбрать овсяное молоко. Его стоимость уточняется при заказе.
+            </div>
+          </article>
+
+          <article class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              Можно ли заказать столик? <span>＋</span>
+            </button>
+            <div class="faq-answer">
+              Да. Напишите нам на hello@example.com или позвоните
+              по номеру +7 (900) 123-45-67.
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p><strong>Тёплый угол</strong> · кофе и выпечка</p>
+      <p>Ежедневно, 8:00–21:00 · +7 (900) 123-45-67</p>
+    </div>
+  </footer>
+
+  <script>
+    // Мобильное меню
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", isOpen);
+      menuToggle.textContent = isOpen ? "×" : "☰";
+    });
+
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.textContent = "☰";
+      });
+    });
+
+    // Калькулятор стоимости
+    const drink = document.querySelector("#drink");
+    const size = document.querySelector("#size");
+    const price = document.querySelector("#price");
+
+    function updatePrice() {
+      price.textContent = Math.round(Number(drink.value) * Number(size.value));
+    }
+
+    drink.addEventListener("change", updatePrice);
+    size.addEventListener("change", updatePrice);
+
+    // Аккордеон FAQ
+    document.querySelectorAll(".faq-question").forEach((button) => {
+      button.addEventListener("click", () => {
+        const item = button.closest(".faq-item");
+        const shouldOpen = !item.classList.contains("open");
+
+        document.querySelectorAll(".faq-item").forEach((other) => {
+          other.classList.remove("open");
+          other
+            .querySelector(".faq-question")
+            .setAttribute("aria-expanded", "false");
+        });
+
+        if (shouldOpen) {
+          item.classList.add("open");
+          button.setAttribute("aria-expanded", "true");
+        }
+      });
+    });
+
+    // Слайдер фотографий
+    const slides = [...document.querySelectorAll(".slide")];
+    const dotsContainer = document.querySelector(".dots");
+    let currentSlide = 0;
+
+    slides.forEach((_, index) => {
+      const dot = document.createElement("button");
+      dot.className = "dot" + (index === 0 ? " active" : "");
+      dot.type = "button";
+      dot.setAttribute("aria-label", `Показать фото ${index + 1}`);
+      dot.addEventListener("click", () => showSlide(index));
+      dotsContainer.appendChild(dot);
+    });
+
+    const dots = [...dotsContainer.querySelectorAll(".dot")];
+
+    function showSlide(index) {
+      currentSlide = (index + slides.length) % slides.length;
+
+      slides.forEach((slide, i) => {
+        slide.classList.toggle("active", i === currentSlide);
+      });
+
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("active", i === currentSlide);
+      });
+    }
+
+    document.querySelector(".prev").addEventListener("click", () => {
+      showSlide(currentSlide - 1);
+    });
+
+    document.querySelector(".next").addEventListener("click", () => {
+      showSlide(currentSlide + 1);
+    });
+  </script>
+</body>
+</html>
